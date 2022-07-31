@@ -50,4 +50,4 @@
 - 目的地へのルートを少し楽しくしたい時。
 
 ## ER図
-[local_chiri.pdf](https://github.com/Natty0404/Bookers1/files/9228119/local_chiri.pdf)
+![local_chiri](https://user-images.githubusercontent.com/106375669/182012242-faf5b146-8001-42dd-b776-d8acc7192284.png)
