@@ -50,4 +50,4 @@
 - 目的地へのルートを少し楽しくしたい時。
 
 ## ER図
-![Revise  local_chiri](https://user-images.githubusercontent.com/106375669/182024862-70861829-132e-4c22-88eb-4349337c0c34.png)
+![Revise2  local_chiri](https://user-images.githubusercontent.com/106375669/182026502-7c868a3b-9e33-4a3e-9d64-1463a434c710.png)
