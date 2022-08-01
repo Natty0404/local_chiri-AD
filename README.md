@@ -42,6 +42,6 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
--
+
 ## ER図
 ![Revise2  local_chiri](https://user-images.githubusercontent.com/106375669/182026502-7c868a3b-9e33-4a3e-9d64-1463a434c710.png)
