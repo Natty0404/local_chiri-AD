@@ -1,18 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-      <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong>  !!</h1>
-      <p>In  <i class="fas fa-book"></i><strong>Bookers</strong>, </p>
-      <p>you can share and exchange  your opinions , inpressions , and emotions</p>
-      <p> about various books!</p>
-      <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-        </div>
-        <div class="row">
-          <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
-        </div>
+    <div class="col-6 mt-5">
+      　　<%= image_tag "logo_text.png", width: "600px" %>
+      <div>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-info btn-sm btn-block mt-5" %>
+      </div>
+      <div>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success btn-sm btn-block mt-4" %>
+      </div>
+      <div>
+        <%= link_to "ゲストログイン", new_user_registration_path, class: "btn btn-warning btn-sm btn-block mt-4" %>
       </div>
     </div>
+
+    <div class="col-6 mt-5">
+      <%= image_tag "illust_location.png", width: "650px" %>
+    </div>
+
+
+
+
+
+
   </div>
 </div>
+
+
