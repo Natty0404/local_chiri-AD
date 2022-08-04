@@ -1,2 +1,33 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg-3">
+      <h4 class="mt-4"><strong>投稿ユーザー</strong></h4><br>
+      <%= render 'users/info', user: current_user %>
+    </div>
+
+    <div class="mx-auto col-lg-8">
+      <h4 class="mt-4"><strong>聖地詳細</strong></h4><br>
+       <div class="mx-auto col-8">
+         <div class="mx-auto mb-3">
+           <%= image_tag @post.get_post_image(500,500) %>
+         </div>
+         <div class="mx-auto mb-3">
+           <p><strong>聖地名</strong>　<%= @post.title %></p>
+         </div>
+         <div class="mx-auto mb-3">
+           <p><strong>聖地説明</strong>　<%= @post.body %></p>
+         </div>
+         <% if @user == current_user %>
+          <div class="row">
+            <div class="col ml-5">
+             <%= link_to "編集", edit_post_path(@post), class:"btn btn-outline-success btn-block edit_book_#{@post.id}" %>
+            </div>
+            <div class="col">
+              <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class:"btn btn-outline-danger btn-block destroy_book_#{@post.id}"%>
+            </div>
+          </div>
+         <% end %>
+       </div>
+    </div>
+  </div>
+</div>

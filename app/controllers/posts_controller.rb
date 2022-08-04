@@ -22,6 +22,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
   end
 
   def edit
@@ -31,12 +33,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to 'index'
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    params.require(:post).permit(:title, :body, :post_image)
   end
 
   def ensure_correct_user
