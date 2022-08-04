@@ -16,18 +16,28 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
   end
 
   def unsubscribe
   end
 
   def withdraw
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "またのご利用お待ちしております"
+    redirect_to root_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :email, :profile_image)
   end
 
   def ensure_correct_user

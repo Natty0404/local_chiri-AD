@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
-  get "users/unsubscribe"
+  get "users/unsubscribe" => "users#unsubscribe"
   patch "users/withdraw"
 
   # devise_scope :user do
