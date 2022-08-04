@@ -1,7 +1,15 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark color" style="background-color:#008080" >
     <div class="container">
-      <a class="navbar-brand" href="/"><span><strong>ロケチリ！</strong></span></a>
+      <% if user_signed_in? %>
+        <%= link_to posts_path do %>
+          <%= image_tag "logo_text3.png", width: "120px" %>
+        <% end %>
+      <% else %>
+        <%= link_to root_path do %>
+          <%= image_tag "logo_text3.png", width: "120px" %>
+        <% end %>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

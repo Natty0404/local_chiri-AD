@@ -1,0 +1,17 @@
+<%= form_with model:post, local:true do |f| %>
+  <div class="mb-3">
+    <%= f.label :post_image, "画像" %>
+    <%= f.file_field :post_image, accept: "image/*" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :title, "聖地となった作品" %>
+    <%= f.text_field :title, class:"form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label  :body, "説明" %>
+    <%= f.text_area :body, class:"form-control" %>
+  </div>
+  <div class="mb-3 mt-3">
+    <%= f.submit "新規投稿", class:"btn btn-success btn-block" %>
+  </div>
+<% end %>
