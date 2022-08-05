@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-lg-4 mt-2">
       <h2 class="mt-3"><strong>My page</strong></h2><br>
-      <%= render 'users/info', user: current_user %>
-      <% if @user == current_user %>
+      <%= render 'users/info', user: current_user %><br>
+      <% if @user == current_user || user.name != "ゲストユーザー" %>
       <div>
         <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
           <i class="fas fa-user-cog"></i>
