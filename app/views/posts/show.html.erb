@@ -14,16 +14,16 @@
          <div class="mx-auto mb-3">
            <p><strong>聖地名</strong>　<%= @post.title %></p>
          </div>
-         <div class="mx-auto mb-3">
+         <div class="mx-auto mb-5">
            <p><strong>聖地説明</strong>　<%= @post.body %></p>
          </div>
          <% if @user == current_user %>
           <div class="row">
             <div class="col ml-5">
-             <%= link_to "編集", edit_post_path(@post), class:"btn btn-outline-success btn-block edit_book_#{@post.id}" %>
+             <%= link_to "編集", edit_post_path(@post.id), class:"btn btn-outline-success btn-block" %>
             </div>
             <div class="col">
-              <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class:"btn btn-outline-danger btn-block destroy_book_#{@post.id}"%>
+              <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class:"btn btn-outline-danger btn-block"%>
             </div>
           </div>
          <% end %>

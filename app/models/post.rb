@@ -3,6 +3,10 @@ class Post < ApplicationRecord
   has_one_attached :post_image
   belongs_to :user, dependent: :destroy
 
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :post_image, presence: true
+
   def get_post_image(width, height)
     unless post_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image_post.png')
