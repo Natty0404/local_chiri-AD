@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.post.page(params[:page]).per(10)
+    @posts = @user.posts.page(params[:page]).per(2)
   end
 
   def edit
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find_by(name: params[:name])
   end
 
   def withdraw

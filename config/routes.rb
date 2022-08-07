@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
   get "users/unsubscribe" => "users#unsubscribe"
-  patch "users/withdraw"
+  patch "users/withdraw" => "users#withdraw"
 
 
 end
