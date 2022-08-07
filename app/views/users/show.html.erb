@@ -58,7 +58,7 @@
                 <%= image_tag post.get_post_image(100,100) %>
               <% end %>
            </td>
-            <td><%= link_to @post.user.name, user_path(@user.id) %></td>
+            <td><%= link_to post.user.name, user_path(@user.id) %></td>
             <td>
               <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
             </td>

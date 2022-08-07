@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(10)
+    @posts = Post.all
     @post = Post.new
   end
 
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to 'index'
+    redirect_to post_path
   end
 
   private
