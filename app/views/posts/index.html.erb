@@ -4,47 +4,6 @@
       <%= render 'users/info', user: current_user %>
       <%= render 'form', post: @post %>
     </div>
-     <div class="mx-auto col-lg-8 ml-3">
-       <h4 class="mt-5"><strong>聖地巡礼一覧</strong></h4><br>
-       <table class='table table-hover table-inverse'>
-       <thead>
-        <tr>
-          <th></th>
-          <th>作品名</th>
-          <th>投稿日</th>
-        </tr>
-      </thead>
-       <% @posts.each do |post| %>
-       <tr>
-          <td>
-            <%= link_to post_path(post.id) do %>
-              <%= image_tag post.get_post_image(100,100) %></td>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
-          </td>
-          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-       </tr>
-       <% end %>
-
-       <% if @post.favorited_by?(current_user) %>
-          <p>
-            <%= link_to post_favorites_path(@post), method: :delete do %>
-              ♥<%= @post.favorites.count %> いいね
-            <% end %>
-          </p>
-          <% else %>
-          <p>
-            <%= link_to post_favorites_path(@post), method: :post do %>
-              ♡<%= @post.favorites.count %> いいね
-            <% end %>
-          </p>
-        <% end %>
-       </tbody>
-      </table>
-      <%= paginate @posts %>
-    </div>
   </div>
 </div>
 
