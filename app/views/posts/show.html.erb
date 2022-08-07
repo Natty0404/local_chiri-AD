@@ -23,7 +23,7 @@
              <%= link_to "編集", edit_post_path(@post.id), class:"btn btn-outline-success btn-block" %>
             </div>
             <div class="col">
-              <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class:"btn btn-outline-danger btn-block"%>
+              <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block"%>
             </div>
           </div>
          <% end %>

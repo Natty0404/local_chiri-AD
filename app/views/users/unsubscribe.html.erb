@@ -1,2 +1,22 @@
-<h1>Users#unsubscribe</h1>
-<p>Find me in app/views/users/unsubscribe.html.erb</p>
+<div class="container">
+ <div class="d-flex align-items-center justify-content-center" style="height:200px;" >
+   <h1><strong>本当に退会しますか？</strong></h1>
+  </div>
+
+  <div class="col-md-6 mx-auto text-center">
+    <h5>
+     退会されますと、投稿内容などがすべて削除されます。<br>
+     本当に退会してよろしいですか？<br>
+    </h5>
+  </div>
+
+  <div class="col-md-6 mt-4 mx-auto text-center">
+   <div class="row">
+    <div class="col">
+     <%= link_to "退会する", users_withdrawal_path, class:"btn btn-danger btn-block", method: :patch, data: { confilm: "本当に退会しますか？" } %>
+    </div>
+    <div class="col">
+     <%= link_to '退会しない', posts_path, class:"btn btn-primary btn-block" %><br><br>
+    </div>
+   </div>
+  </div>
