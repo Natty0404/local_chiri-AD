@@ -7,12 +7,12 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
 
-  validates :name, presence: true
-  validates :email, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 
-  # def active_for_authentication?
-  #   super && (is_deleted == false)
-  # end
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   def self.guest
     find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com') do |user|

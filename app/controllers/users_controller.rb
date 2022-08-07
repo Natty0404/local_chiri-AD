@@ -25,11 +25,10 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
-    @user = User.find_by(name: params[:name])
   end
 
   def withdraw
-    @user = User.find(params[:id])
+    @user = current_user
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "またのご利用お待ちしております"

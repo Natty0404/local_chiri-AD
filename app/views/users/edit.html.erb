@@ -19,7 +19,7 @@
         <%= f.submit "設定変更", class:"btn btn-secondary btn-block" %>
       </div>
       <div class="mb-3">
-        <%= link_to "退会する", users_unsubscribe_path, class:"btn btn-outline-danger btn-block" %>
+        <%= link_to "退会する", users_unsubscribe_path(@user), class:"btn btn-outline-danger btn-block" %>
       </div>
     <% end %>
   </div>
