@@ -8,9 +8,9 @@
   </table><br>
   <div class="center-block">
     <% if current_user.following?(user) %>
-      <%= link_to "フォロー解除", user_relationships_path(user.id), class:"btn btn-danger rounded-pill btn-block", method: :delete %><br>
+      <%= link_to "フォロー解除", user_relationships_path(user.id), class:"btn btn-danger rounded-pill btn-block btn-sm", method: :delete %><br>
     <% else %>
-      <%= link_to "フォロー", user_relationships_path(user.id), class:"btn btn-primary rounded-pill btn-block", method: :post %>
+      <%= link_to "フォロー", user_relationships_path(user.id), class:"btn btn-primary rounded-pill btn-block btn-sm", method: :post %>
  　　<% end %>
   </div>
 </div>

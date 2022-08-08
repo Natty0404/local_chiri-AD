@@ -30,12 +30,12 @@
     <div class="mx-auto col-lg-3">
       <div class="mx-auto mt-5">
        <span><strong>コメント</strong></span>　<%= @post.post_comments.count %><br><br>
-       <%= render 'post_comments/index', post: @post, user: @user %>
+       <%= render 'post_comments/index', post_comments: @post_comments, user: @user %>
       </div>
+      <%= paginate @post_comments %>
       <div class="mx-auto mb-4">
         <%= render 'post_comments/form', post: @post, post_comment: @post_comment %>
       </div>
-      <%= paginate @post_comments %>
     </div>
     <div class="col-lg-3">
       <h4 class="mt-4 text-center"><strong>投稿ユーザー</strong></h4><br>
