@@ -1,6 +1,6 @@
  <div class="container">
   <div class="row">
-    <div class="col-lg-4 mt-2">
+    <div class="col-lg-3 mt-2">
       <h2 class="mt-3"><strong>My page</strong></h2><br>
       <%= render 'users/info', user: current_user %>
       <% if @user == current_user && @user.name != "ゲストユーザー" %>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
 
-    <div class="mx-auto col-lg-8 ml-3">
+    <div class="mx-auto col-lg-9">
        <h4 class="mt-5"><strong>聖地巡礼一覧</strong></h4><br>
        <table class='table table-hover table-inverse'>
        <thead>
@@ -21,6 +21,7 @@
           <th>聖地名</th>
           <th>投稿日</th>
           <th>お気に入り数</th>
+          <th>コメント数</th>
         </tr>
       </thead>
        <% @posts.each do |post| %>
@@ -35,6 +36,7 @@
           </td>
           <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= render "favorites/favorite", post: post %></td>
+          <td><%= post.post_comments.count %></td>
        </tr>
        <% end %>
        </tbody>
