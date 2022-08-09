@@ -1,7 +1,9 @@
 <div class="container ml-2 mt-3">
   <div class="row">
     <div class="col-3 sm-2">
-      <%= render 'users/info', user: current_user %>
+       <div class="follow-btn">
+         <%= render 'users/info', user: current_user %>
+       </div>
       <%= render 'form', post: @post %>
     </div>
 
