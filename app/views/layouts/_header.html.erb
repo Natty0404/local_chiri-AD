@@ -20,6 +20,9 @@
             <span>Hello, <%= current_user.name %> !</span>
           </nav>
           <li>
+            <%= link_to "みんなの聖地", posts_path, class: "btn btn-outline-light mr-4 mb-1" %>
+          </li>
+          <li>
             <%= link_to "My page", user_path(current_user), class: "btn btn-outline-light mr-4 mb-1" %>
           </li>
           <li>
