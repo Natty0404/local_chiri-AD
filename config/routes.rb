@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "home/about" => "homes#about"
   get "users/unsubscribe" => "users#unsubscribe"
   patch "users/withdraw" => "users#withdraw"
+  get "users/favorite" => "users#favorite"
 
   devise_for :users
   devise_scope :user do
@@ -15,9 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
+    get "favorite" => "users#favorite"
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get "followings" => "relationships#followings", as: "followings"
+    get "followers" => "relationships#followers", as: "followers"
   end
 
 end

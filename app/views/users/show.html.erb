@@ -10,6 +10,11 @@
         <% end %>
       </div>
       <% end %>
+      <div>
+        <%= link_to user_favorite_path(@user), class:"btn btn-warning btn-block mt-4 edit_user_#{@user.id}" do %>
+          <i class="fas fa-star" style="color: #003f8e;"></i>
+        <% end %>
+      </div>
     </div>
 
     <div class="mx-auto col-lg-9">
@@ -44,35 +49,6 @@
        </tbody>
       </table>
       <%= paginate @posts %>
-      <h4 class="mt-5"><strong>お気に入り一覧</strong></h4><br>
-       <table class='table table-hover table-inverse'>
-       <thead>
-        <tr>
-          <th></th>
-          <th>投稿者</th>
-          <th>聖地名</th>
-          <th>投稿日</th>
-        </tr>
-      </thead>
-      <% if @favorite_list.present? %>
-        <% @favorite_list.each do |post| %>
-         <tr>
-           <td>
-              <%= link_to post_path(post.id) do %>
-                <%= image_tag post.get_post_image(100,100) %>
-              <% end %>
-           </td>
-            <td><%= link_to post.user.name, user_path(@user.id) %></td>
-            <td>
-              <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
-            </td>
-            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-         </tr>
-        <% end %>
-        <!--%= paginate @favorite_list %>-->
-       <% end %>
-       </tbody>
-      </table>
     </div>
   </div>
 </div>

@@ -10,9 +10,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(5)
-    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_list = Post.find(favorites)
+    @posts = @user.posts.page(params[:page]).per(10)
+    # @favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    # @favorite_list = Post.find(favorites).page(params[:page]).per(10)
   end
 
   def edit
@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     reset_session
     flash[:notice] = "またのご利用お待ちしております"
     redirect_to root_path
+  end
+
+  def favorite
+    @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).per(10)
+    @favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    @favorite_list = Post.find(favorites)
   end
 
   private
