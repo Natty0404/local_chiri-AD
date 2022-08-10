@@ -38,10 +38,10 @@ class UsersController < ApplicationController
   end
 
   def favorite
-    @user = current_user
-    @posts = @user.posts.page(params[:page]).per(10)
+    # @user = current_user
+    # @posts = @user.posts.page(params[:page]).per(10)
     @favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_list = Post.where(@favorites)
+    @favorite_list = Post.find(@favorites)
   end
 
   private
