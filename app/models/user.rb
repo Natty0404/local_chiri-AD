@@ -18,10 +18,12 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
-  def active_for_authentication?
-    super && (is_deleted == false)
-  end
+  # 会員ステータス
+  # def active_for_authentication?
+  #   super && (is_deleted == false)
+  # end
 
+  # ゲストログイン
   def self.guest
     find_or_create_by!(name: "ゲストユーザー" ,email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
