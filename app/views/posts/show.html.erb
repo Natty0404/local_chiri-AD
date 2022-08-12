@@ -7,13 +7,16 @@
            <%= image_tag @post.get_post_image(400,400) %>
          </div>
          <div class="mx-auto mb-3">
-           <p><strong>投稿者</strong>　<%= link_to @post.user.name, user_path(@user.id) %></p>
+           <p><strong>投稿者</strong>　　　<%= link_to @post.user.name, user_path(@user.id) %></p>
          </div>
          <div class="mx-auto mb-3">
-           <p><strong>聖地名</strong>　<%= @post.title %></p>
+           <p><strong>聖地名</strong>　　　<%= @post.title %></p>
          </div>
          <div class="mx-auto mb-4">
-           <p><strong>聖地説明</strong>　<%= @post.body %></p>
+           <p><strong>聖地説明</strong>　　<%= @post.body %></p>
+         </div>
+         <div class="mx-auto mb-4">
+           <p><strong>お気に入り</strong>　<%= @post.favorites.count %></p>
          </div>
          <% if @user == current_user %>
           <div class="row">
