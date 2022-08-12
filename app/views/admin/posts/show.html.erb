@@ -27,6 +27,10 @@
               <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block" %>
             </div>
           </div>
+         <% elsif admin_signed_in? %>
+           <div class="col">
+             <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block" %>
+           </div>
          <% end %>
        </div>
     </div>
@@ -38,15 +42,18 @@
        </div>
       </div>
       <%= paginate @post_comments %>
-      <div class="mx-auto mb-4">
-        <div class="comments-form">
-          <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
-        </div>
-      </div>
     </div>
     <div class="col-lg-3">
       <h4 class="mt-4 text-center"><strong>投稿ユーザー</strong></h4><br>
-      <%= render "users/info", user: @user %>
+      <div class="mx-auto text-center">
+        <table border="0">
+          <tr><%= image_tag @user.get_profile_image(100,100) %></tr><br><br>
+          <tr><strong>Name</strong>　</tr>
+          <tr><%= @user.name %></tr><br><br>
+          <td>follow　<%=  link_to @user.followings.count, admin_user_followings_path(@user.id) %></td>
+          <td>follower　<%= link_to @user.followers.count, admin_user_followers_path(@user.id) %></td>
+        </table><br>
+      </div>
     </div>
   </div>
 </div>
