@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path(@post)
+      redirect_to request.referer
     else
       @posts = Post.all
       render 'index'
@@ -42,9 +42,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to post_path
+    redirect_to user_path(@user.id)
   end
 
   private

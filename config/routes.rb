@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-
+  get 'searches/search'
   root to: "homes#top"
   get "home/about" => "homes#about"
   get "users/unsubscribe" => "users#unsubscribe"
   patch "users/withdraw" => "users#withdraw"
   get "users/favorite" => "users#favorite"
+  get "search" => "searches#search"
 
   devise_for :users
   devise_scope :user do
