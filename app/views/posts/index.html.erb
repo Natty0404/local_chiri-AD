@@ -25,7 +25,7 @@
             <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
           </td>
           <td>
-            <!--%= link_to post.user.name, user_path(post.user.id), class:"post_#[user.id}" %>-->
+            <%= link_to post.user.name, user_path(post.user.id), class:"post_#[user.id}" %>
           </td>
           <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
           <td class="favorite_btn_<%= post.id %>">

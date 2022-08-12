@@ -49,8 +49,9 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # 検索機能
   def self.search(word)
-    where(["name like?", "%#{word}%"])
+    @user = User.where(["name like?", "%#{word}%"])
   end
 
 end
