@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="mt-4"><strong>みんなの聖地一覧</strong></h2><br>
+       <table class='table table-hover table-inverse'>
+       <thead>
+        <tr>
+          <th></th>
+          <th>聖地名</th>
+          <th>投稿者</th>
+          <th>投稿日</th>
+          <th>お気に入り数</th>
+          <th>コメント数</th>
+        </tr>
+      </thead>
+       <% @posts.each do |post| %>
+       <tr>
+          <td>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.get_post_image(100,100) %></td>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
+          </td>
+          <td>
+            <%= link_to post.user.name, user_path(post.user.id), class:"post_#[user.id}" %>
+          </td>
+          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="favorite_btn_<%= post.id %>">
+            <%= render "favorites/favorite", post: post %>
+          </td>
+          <td><%= post.post_comments.count %></td>
+       </tr>
+       <% end %>
+       </tbody>
+      </table>
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>
+
+
+
+

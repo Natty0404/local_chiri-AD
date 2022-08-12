@@ -1,0 +1,54 @@
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-3 mt-2">
+      <h2 class="mt-3"><strong>My page</strong></h2><br>
+      <%= render 'users/info', user: @user %>
+      <% if @user == current_user && @user.name != "ゲストユーザー" %>
+      <div>
+        <%= link_to edit_user_path(@user), class:"btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+      <% end %>
+      <div>
+        <%= link_to user_favorite_path(@user), class:"btn btn-warning btn-block mt-4 edit_user_#{@user.id}" do %>
+          <i class="fas fa-star" style="color: #003f8e;"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="mx-auto col-lg-9">
+       <h4 class="mt-5"><strong><%= @user.name %>の聖地巡礼一覧</strong></h4><br>
+       <table class='table table-hover table-inverse'>
+       <thead>
+        <tr>
+          <th></th>
+          <th>聖地名</th>
+          <th>投稿日</th>
+          <th>お気に入り数</th>
+          <th>コメント数</th>
+        </tr>
+      </thead>
+       <% @posts.each do |post| %>
+       <tr>
+          <td>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.get_post_image(100,100) %></td>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
+          </td>
+          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="favorite_btn_<%= post.id %>">
+            <%= render "favorites/favorite", post: post %>
+          </td>
+          <td><%= post.post_comments.count %></td>
+       </tr>
+       <% end %>
+       </tbody>
+      </table>
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="mt-4"><strong>お気に入り一覧</strong></h2><br>
+       <table class='table table-hover table-inverse'>
+       <thead>
+        <tr>
+          <th></th>
+          <th>投稿者</th>
+          <th>聖地名</th>
+          <th>投稿日</th>
+        </tr>
+      </thead>
+      <% if @favorite_list.present? %>
+        <% @favorite_list.each do |post| %>
+         <tr>
+           <td>
+              <%= link_to post_path(post.id) do %>
+                <%= image_tag post.get_post_image(100,100) %>
+              <% end %>
+           </td>
+            <td><%= link_to post.user.name, user_path(post.user.id) %></td>
+            <td>
+              <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
+            </td>
+            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+         </tr>
+        <% end %>
+        <!--%= paginate @favorite_list %>-->
+       <% end %>
+       </tbody>
+      </table>
+    </div>
+  </div>
+</div>
