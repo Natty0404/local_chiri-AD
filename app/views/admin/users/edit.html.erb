@@ -1,10 +1,10 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2 class="mt-5"><strong><%= @user.name %>さんの会員情報編集</strong></h2><br>
-    <%= form_with model:@user, local:true do |f| %>
+    <h2 class="mt-5"><strong><%= @user.name %> さんの会員情報編集</strong></h2><br>
+    <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local:true do |f| %>
 
-      <div class="mb-3">
+      <div class="mb-4">
         <p>会員ID　　<%= @user.id %></p>
       </div>
       <div class="mb-4">
@@ -12,15 +12,12 @@
         <%= f.file_field :profile_image, accept: "image/*", class:"form-control-file" %>
       </div>
       <div class="mb-4">
-        <%= f.label :name %>
+        <%= f.label :name, "ユーザー名" %>
         <%= f.text_field :name, class:"form-control" %>
       </div>
-      <div class="mb-5">
+      <div class="mb-4">
         <%= f.label :email, "メールアドレス" %>
         <%= f.email_field :email, class:"form-control", autocomplete: "email" %>
-      </div>
-      <div class="mb-4">
-        <%= f.submit "設定変更", class:"btn btn-secondary btn-block" %>
       </div>
       <div class="mb-3">
         <%= f.label :is_deleted, "会員ステータス　　" %>
@@ -28,6 +25,9 @@
         <%= f.label :is_deleted, "有効　　", value: false %>
         <%= f.radio_button :is_deleted, true%>
         <%= f.label :is_deleted, '退会', value: true %>
+      </div>
+      <div class="mb-4">
+        <%= f.submit "会員情報変更", class:"btn btn-outline-secondary btn-block" %>
       </div>
     <% end %>
   </div>

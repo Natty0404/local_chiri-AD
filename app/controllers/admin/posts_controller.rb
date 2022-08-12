@@ -32,17 +32,13 @@ class Admin::PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to post_path(@post.id)
-    else
-      render 'edit'
-    end
   end
 
   def destroy
+    # @user = User.find(params[:id])
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to post_path
+    redirect_to admin_user_path(@user)
   end
 
   private

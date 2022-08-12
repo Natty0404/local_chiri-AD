@@ -19,7 +19,7 @@
            <p><strong>お気に入り</strong>　<%= @post.favorites.count %></p>
          </div>
          <div class="col">
-           <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block" %>
+           <%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block" %>
          </div>
        </div>
     </div>
