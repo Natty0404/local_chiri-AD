@@ -27,7 +27,7 @@
       <div class="mx-auto mt-5">
        <span><strong>コメント</strong></span>　<%= @post.post_comments.count %><br><br>
        <div class="comments-index">
-         <%= render "post_comments/index", post_comments: @post_comments, user: @user %>
+         <%= render "admin/post_comments/index", post_comments: @post_comments, user: @user %>
        </div>
       </div>
       <%= paginate @post_comments %>

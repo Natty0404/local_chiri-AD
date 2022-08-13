@@ -1,7 +1,7 @@
 <div class="mx-auto text-center">
   <table border="0">
     <tr><%= image_tag user.get_profile_image(100,100) %></tr><br><br>
-    <tr><strong><%= link_to user.name, admin_user_path(user.id) %></strong></tr>
+    <tr><strong><%= link_to user.name, admin_user_path(user.id) %></strong></tr><br><br>
     <td><%=  link_to user.followings.count, admin_user_followings_path(user.id) %> フォロー</td>
     <td><%= link_to user.followers.count, admin_user_followers_path(user.id) %> フォロワー</td>
     <tr class="mb-4"><strong>会員ステータス</strong>　</tr>

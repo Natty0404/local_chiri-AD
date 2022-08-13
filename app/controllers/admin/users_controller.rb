@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @users = User.page(params[:page]).per(10)
@@ -33,11 +34,5 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :profile_image, :is_deleted)
   end
 
-  def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
-    end
-  end
 
 end
