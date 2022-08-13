@@ -1,10 +1,9 @@
 <div class="mx-auto text-center">
   <table border="0">
     <tr><%= image_tag user.get_profile_image(100,100) %></tr><br><br>
-    <tr><strong>Name</strong>　</tr>
-    <tr><%= user.name %></tr><br><br>
-    <td>follow　<%=  link_to user.followings.count, user_followings_path(user.id) %></td>
-    <td>follower　<%= link_to user.followers.count, user_followers_path(user.id) %></td>
+    <tr><strong><%= user.name %></strong></tr><br><br>
+    <td><%=  link_to user.followings.count, user_followings_path(user.id) %> フォロー</td>
+    <td><%= link_to user.followers.count, user_followers_path(user.id) %> フォロワー</td>
   </table><br>
   <div class="center-block">
     <% if current_user.following?(user) %>

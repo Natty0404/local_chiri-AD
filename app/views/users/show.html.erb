@@ -40,7 +40,7 @@
             <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
           </td>
           <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-          <td class="favorite_btn_<%= post.id %>">
+          <td class="favorite-btn">
             <%= render "favorites/favorite", post: post %>
           </td>
           <td><%= post.post_comments.count %></td>

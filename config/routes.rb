@@ -24,4 +24,23 @@ Rails.application.routes.draw do
     get "followers" => "relationships#followers", as: "followers"
   end
 
+
+  # 管理者ログイン
+  devise_for :admin, skip: [:registrations, :passwords] , controllers: {
+    sessions: "admin/sessions"
+  }
+
+  namespace :admin do
+    get "/"=>"homes#top"
+    resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resources :post_comments, only: [:create, :destroy]
+    end
+    resources :users, only: [:index, :show, :edit, :update] do
+      get "favorite" => "users#favorite"
+      resource :relationships, only: [:create, :destroy]
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
+    end
+  end
+
 end
