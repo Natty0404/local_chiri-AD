@@ -8,8 +8,12 @@
     <%= f.text_field :title, class:"form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label  :body, "説明" %>
+    <%= f.label :body, "説明" %>
     <%= f.text_area :body, class:"form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= t.label  :address, "住所" %>
+    <%= t.text_field :address, class:"form-control" %>
   </div>
   <div class="mb-3 mt-3">
     <%= f.submit "新規投稿", class:"btn btn-success btn-block" %>

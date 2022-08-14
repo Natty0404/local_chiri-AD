@@ -14,7 +14,7 @@ class PostsController < ApplicationController
       redirect_to request.referer
     else
       @posts = Post.all
-      render 'index'
+      render 'new'
     end
   end
 
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_image)
+    params.require(:post).permit(:title, :body, :post_image, :address, :latitude, :longitude)
   end
 
   def ensure_correct_user

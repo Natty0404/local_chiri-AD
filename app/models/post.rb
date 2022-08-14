@@ -1,5 +1,9 @@
 class Post < ApplicationRecord
 
+  # 住所保存
+  geocoded_by :address
+  after_validation :geocode
+
   has_one_attached :post_image
   has_one :spot, dependent: :destroy
   accepts_nested_attributes_for :spot

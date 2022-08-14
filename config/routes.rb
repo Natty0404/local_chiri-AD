@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     get "followers" => "relationships#followers", as: "followers"
   end
 
-
   # 管理者ログイン
   devise_for :admin, skip: [:registrations, :passwords] , controllers: {
     sessions: "admin/sessions"

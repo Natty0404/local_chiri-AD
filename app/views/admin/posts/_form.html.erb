@@ -8,13 +8,6 @@
     <%= f.text_field :title, class:"form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.fields_for :spot do |s| %>
-    <%= s.label  :address, "住所" %>
-    <%= s.text_field :address, class:"form-control" %>
-    <%= s.hidden_field :latitude %>
-    <%= s.hidden_field :longitude %>
-  </div>
-  <div class="mb-3">
     <%= f.label  :body, "説明" %>
     <%= f.text_area :body, class:"form-control" %>
   </div>
