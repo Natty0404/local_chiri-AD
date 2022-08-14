@@ -5,8 +5,6 @@ class Post < ApplicationRecord
   after_validation :geocode
 
   has_one_attached :post_image
-  has_one :spot, dependent: :destroy
-  accepts_nested_attributes_for :spot
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
