@@ -1,17 +1,15 @@
-<div class="container mt-3">
-  <div class="row">
-    <div class="col-lg-12">
-      <h2 class="mt-4"><strong>みんなの聖地一覧</strong></h2><br>
+<div class="container mt-3 ml-3">
+  <div class="row ml-4">
+    <div class="col-lg-7 float-center">
+      <h2 class><strong>みんなの聖地一覧</strong></h2><br>
       <%= render "searches/form" %>
-       <table class='table table-hover table-inverse'>
+       <table class="table table-hover table-inverse">
        <thead>
         <tr>
           <th></th>
           <th>聖地名</th>
           <th>投稿者</th>
-          <th>投稿日</th>
           <th>お気に入り数</th>
-          <th>コメント数</th>
         </tr>
       </thead>
        <% @posts.each do |post| %>
@@ -27,16 +25,87 @@
           <td>
             <%= link_to post.user.name, user_path(post.user.id), class:"post_#[user.id}" %>
           </td>
-          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
           <td class="favorite_btn_<%= post.id %>">
             <%= render "favorites/favorite", post: post %>
           </td>
-          <td><%= post.post_comments.count %></td>
        </tr>
        <% end %>
        </tbody>
       </table>
       <%= paginate @posts %>
+    </div>
+    <div class="col-lg-5">
+      <div id="map" style="width: 800px; height: 700px;"></div>
+        <script>
+          let map
+
+          const display = document.getElementById('display')
+
+          // mapの表示関数
+          function initMap() {
+              geocoder = new google.maps.Geocoder()
+
+              // mapの初期位置, 縮尺を定義
+              map = new google.maps.Map(document.getElementById('map'), {
+                  center: {
+                      lat: 35.6458437,
+                      lng: 139.7046171
+                  },
+                  zoom: 12,
+              });
+
+              // mapsテーブルにあるそれぞれのレコードをmap上に表示
+              <% @posts.each do |post| %>
+                  (function(){
+                  var contentString = "住所：<%= post.address %>";
+
+                  // マーカーを立てる
+                  var marker = new google.maps.Marker({
+                      position:{lat: <%= post.latitude %>, lng: <%= post.longitude %>},
+                      map: map,
+                      title: contentString
+                  });
+
+                  // 情報ウィンドウ(吹き出し)の定義
+                  // 投稿の詳細ページへのリンクも
+                  var infowindow = new google.maps.InfoWindow({
+                  position: {lat: <%= post.latitude %>, lng: <%= post.longitude %>},
+                  content: "<a href='<%= post_path(post.id) %>' target='_blank'><%= post.title %><br><%= post.body %></a>"
+                  });
+
+                  // クリックしたときに情報ウィンドウを表示
+                  marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+                  });
+
+                  })();
+              <% end %>
+          }
+
+          let geocoder
+
+          // 地図検索関数
+          function codeAddress() {
+              let inputAddress = document.getElementById('address').value;
+
+              geocoder.geocode({
+                  'address': inputAddress
+              }, function (results, status) {
+                  if (status == 'OK') {
+                      map.setCenter(results[0].geometry.location);
+                      var marker = new google.maps.Marker({
+                          map: map,
+                          position: results[0].geometry.location
+                      });
+
+                  display.textContent = "検索結果：" + results[ 0 ].geometry.location
+                  } else {
+                      alert('該当する結果がありませんでした：' + status);
+                  }
+              });
+          }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['SECRET_KEY']%>&callback=initMap"></script>
     </div>
   </div>
 </div>

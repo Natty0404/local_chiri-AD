@@ -8,7 +8,7 @@
           <th></th>
           <th>投稿者</th>
           <th>聖地名</th>
-          <th>投稿日</th>
+          <th>お気に入り数</th>
         </tr>
       </thead>
       <% if @favorite_list.present? %>
@@ -23,7 +23,7 @@
             <td>
               <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
             </td>
-            <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= post.favorites.count %></td>
          </tr>
         <% end %>
         <!--%= paginate @favorite_list %>-->
