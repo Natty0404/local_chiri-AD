@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def favorite
     @favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_list = Post.find(@favorites)
+    @favorite_list = Post.find(@favorites).page(params[:page]).per(5)
   end
 
   private

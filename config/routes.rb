@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/"=>"homes#top"
+    get "search" => "searches#search"
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end

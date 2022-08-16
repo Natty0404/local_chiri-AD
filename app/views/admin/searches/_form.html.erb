@@ -1,6 +1,6 @@
-<% if user_signed_in? %>
+<% if admin_signed_in? %>
   <div class="search-form mb-3">
-    <%= form_with url: search_path, local: true, method: :get do |f| %>
+    <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
     <div class="row">
       <div class="col-6">
         <%= f.text_field :word, class:"form-control", placeholder: "検索ワード" %>

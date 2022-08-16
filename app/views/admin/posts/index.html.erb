@@ -1,7 +1,7 @@
-<div class="container mt-3">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="mt-4"><strong>投稿一覧</strong></h2><br>
+      <h2 class="mt-2"><strong>投稿一覧</strong></h2><br>
       <%= render "admin/searches/form" %>
        <table class='table table-hover table-inverse'>
        <thead>
@@ -11,7 +11,6 @@
           <th>投稿者</th>
           <th>投稿日</th>
           <th>お気に入り数</th>
-          <th>コメント数</th>
         </tr>
       </thead>
        <% @posts.each do |post| %>
@@ -29,7 +28,6 @@
           </td>
           <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= post.favorites.count %></td>
-          <td><%= post.post_comments.count %></td>
        </tr>
        <% end %>
        </tbody>
