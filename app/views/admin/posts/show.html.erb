@@ -37,15 +37,10 @@
       <div class="mx-auto mt-5">
        <span><strong>コメント</strong></span>　<%= @post.post_comments.count %><br><br>
        <div class="comments-index">
-         <%= render "post_comments/index", post_comments: @post_comments, user: @user %>
+         <%= render "admin/post_comments/index", post_comments: @post_comments, user: @user %>
        </div>
       </div>
       <%= paginate @post_comments %>
-      <div class="mx-auto mb-4">
-        <div class="comments-form">
-          <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
-        </div>
-      </div>
     </div>
     <div class="col-lg-3 mt-4">
       <div id="map" style="width: 610px; height: 690px;"></div>

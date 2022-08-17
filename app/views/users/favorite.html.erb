@@ -15,21 +15,21 @@
         <% @favorite_list.each do |post| %>
          <tr>
            <td>
-              <%= link_to post_path(post.id) do %>
+              <%= link_to post_path(post.id), data: {"turbolinks" => false} do %>
                 <%= image_tag post.get_post_image(100,100) %>
               <% end %>
            </td>
             <td><%= link_to post.user.name, user_path(post.user.id) %></td>
             <td>
-              <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
+              <%= link_to post.title, post_path(post.id), data: {"turbolinks" => false} %>
             </td>
             <td><%= post.favorites.count %></td>
          </tr>
         <% end %>
-        <!--%= paginate @favorite_list %>-->
        <% end %>
        </tbody>
       </table>
+      <%= paginate @favorite_list %>
     </div>
   </div>
 </div>

@@ -23,7 +23,7 @@
            <p><strong>投稿日</strong>　　　<%= @post.created_at.strftime('%Y/%m/%d') %></p>
          </div>
          <div class="mx-auto mb-4">
-           <p><strong>お気に入り</strong>　<%= @post.favorites.count %></p>
+           <strong>お気に入り</strong>　 　<span class="favorite_btn_<%= @post.id %>"><%= render "favorites/favorite", post: @post %></p>
          </div>
          <% if @user == current_user %>
           <div class="row">

@@ -5,22 +5,13 @@
       <div class="follow-btn">
         <%= render 'users/info', user: current_user %>
       </div>
-        <% if @post.errors.any? %>
-          <%= @post.errors.count %>件のエラーが発生しました
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
         <%= render 'form', post: @post %>
-      </div>
-
-      <div class="col-lg-9 mb-3">
-        <input id="address" type="textbox" value="" class="col-sm-8 mb-2">
-        <input type="button" value="地図を検索" onclick="codeAddress()" class="btn btn-secondary btn-sm mb-2">
-        <div id="map" style="width: 1200px; height: 720px;"></div>
-      </div>
+    </div>
+    <div class="col-lg-9 mb-3">
+      <input id="address" type="textbox" value="" class="col-sm-8 mb-2">
+      <input type="button" value="地図を検索" onclick="codeAddress()" class="btn btn-secondary btn-sm mb-2">
+      <div id="map" style="width: 1200px; height: 720px;"></div>
+    </div>
   </div>
 </div>
 

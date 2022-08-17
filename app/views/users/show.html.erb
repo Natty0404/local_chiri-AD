@@ -12,7 +12,7 @@
       </div>
       <% end %>
       <div>
-        <%= link_to user_favorite_path(@user), class:"btn btn-warning btn-block mt-4 edit_user_#{@user.id}" do %>
+        <%= link_to user_favorite_path(@user), class:"btn btn-warning btn-block mt-4" do %>
           <i class="fas fa-star" style="color: #003f8e;"></i>
         <% end %>
       </div>
@@ -33,18 +33,18 @@
        <% @posts.each do |post| %>
        <tr>
           <td>
-            <%= link_to post_path(post.id) do %>
+            <%= link_to post_path(post.id), data: {"turbolinks" => false} do %>
               <%= image_tag post.get_post_image(100,100) %></td>
             <% end %>
           </td>
           <td>
-            <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
+            <%= link_to post.title, post_path(post.id), class:"post_#[post.id}", data: {"turbolinks" => false} %>
           </td>
-          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-          <td class="favorite-btn">
+          <td class="favorite_btn_<%= post.id %>">
             <%= render "favorites/favorite", post: post %>
           </td>
           <td><%= post.post_comments.count %></td>
+          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
        </tr>
        <% end %>
        </tbody>

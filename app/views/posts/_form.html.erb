@@ -1,18 +1,18 @@
 <%= form_with model:post, local:true do |f| %>
   <div class="mb-3">
-    <%= f.label :post_image, "画像" %>
+    <%= f.label :post_image, "画像 (※必須)" %>
     <%= f.file_field :post_image, accept: "image/*" %>
   </div>
   <div class="mb-3">
-    <%= f.label :title, "聖地名" %>
+    <%= f.label :title, "聖地名 (※必須)" %>
     <%= f.text_field :title, class:"form-control" %>
   </div>
   <div class="mb-3">
-    <%= f.label :body, "聖地詳細" %>
+    <%= f.label :body, "聖地詳細 (※必須)" %>
     <%= f.text_area :body, class:"form-control" %>
   </div>
   <div class="mb-4">
-    <%= f.label :address, "住所" %>
+    <%= f.label :address, "住所 (※必須)" %>
     <%= f.text_field :address, class:"form-control" %>
   </div>
   <div class="mb-3 mt-3">

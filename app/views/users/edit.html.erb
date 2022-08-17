@@ -3,33 +3,39 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2 class="mt-5"><strong>ユーザー設定</strong></h2><br>
-    <% if @user.errors.any? %>
-      <%= @user.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    <%= form_with model:@user, local:true do |f| %>
-      <div class="mb-4">
-        <%= f.label :profile_image, "プロフィール画像" %>
-        <%= f.file_field :profile_image, accept: "image/*", class:"form-control-file" %>
+      <div class="mx-auto error_area">
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li class="error text-center" style="color:red;"><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
       </div>
-      <div class="mb-4">
-        <%= f.label :name, "ユーザー名" %>
-        <%= f.text_field :name, class:"form-control" %>
-      </div>
-      <div class="mb-5">
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, class:"form-control", autocomplete: "email" %>
-      </div>
-      <div class="mb-4">
-        <%= f.submit "設定変更", class:"btn btn-secondary btn-block" %>
-      </div>
-      <div class="mb-3">
-        <%= link_to "退会する", users_unsubscribe_path(@user), class:"btn btn-outline-danger btn-block" %>
-      </div>
-    <% end %>
+      <%= form_with model:@user, local:true do |f| %>
+        <div class="mb-4">
+          <%= f.label :profile_image, "プロフィール画像" %>
+          <%= f.file_field :profile_image, accept: "image/*", class:"form-control-file" %>
+        </div>
+        <div class="mb-4">
+          <%= f.label :name, "ニックネーム" %>
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="mb-5">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, class:"form-control", autocomplete: "email" %>
+        </div>
+        <div class="mb-4">
+          <%= f.submit "設定変更", class:"btn btn-secondary btn-block" %>
+        </div>
+        <div class="mb-4">
+          <%= link_to "戻る", user_path(@user), class:"btn btn-primary btn-block" %>
+        </div>
+        <div class="mb-3">
+          <%= link_to "退会する", users_unsubscribe_path(@user), class:"btn btn-outline-danger btn-block" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

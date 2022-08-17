@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
+    @post = Post.new
     @user = current_user
     @posts = @user.posts
-    @post = Post.new
   end
 
   def create
@@ -15,13 +15,16 @@ class PostsController < ApplicationController
       redirect_to request.referer
       flash[:notice] = "投稿が完了しました"
     else
+      @post = Post.new
+      @user = current_user
+      @posts = @user.posts
       render 'new'
+      flash[:alert] = "投稿に失敗しました"
     end
   end
 
   def index
     @posts = Post.page(params[:page]).per(5)
-    # @post = Post.find(params[:id])
   end
 
   def show
@@ -49,7 +52,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(@user.id)
-    flash[:alert] = "投稿を削除しました"
+    flash[:notice] = "投稿を削除しました"
   end
 
   private

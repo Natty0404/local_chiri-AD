@@ -16,15 +16,15 @@
        <% @posts.each do |post| %>
        <tr>
           <td>
-            <%= link_to post_path(post.id) do %>
+            <%= link_to post_path(post.id), data: {"turbolinks" => false} do %>
               <%= image_tag post.get_post_image(100,100) %></td>
             <% end %>
           </td>
           <td>
-            <%= link_to post.title, post_path(post.id), class:"post_#[post.id}" %>
+            <%= link_to post.title, post_path(post.id), data: {"turbolinks" => false} %>
           </td>
           <td>
-            <%= link_to post.user.name, user_path(post.user.id), class:"post_#[user.id}" %>
+            <%= link_to post.user.name, user_path(post.user.id) %>
           </td>
           <td class="favorite_btn_<%= post.id %>">
             <%= render "favorites/favorite", post: post %>

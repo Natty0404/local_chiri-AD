@@ -56,3 +56,9 @@ table {
   width: 100%;
 }
 
+.error_area {
+  background-color: #ffe6ea;
+  color: red;
+  font-weight: bold;
+  width: 70%;
+}
