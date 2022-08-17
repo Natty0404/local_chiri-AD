@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ニックネーム
+        email: メールアドレス
+      post:
+        title: 聖地名
+        body: 聖地詳細
+        image: 画像
+        address: 住所
