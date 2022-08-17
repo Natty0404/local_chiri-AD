@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       redirect_to request.referer
-      flash[:notice] = "投稿しました"
+      flash[:notice] = "投稿が完了しました"
     else
       render 'new'
     end
@@ -37,8 +37,10 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       redirect_to post_path(@post.id)
+      flash[:notice] = "更新が完了しました"
     else
       render 'edit'
+      flash[:alert] = "更新に失敗しました"
     end
   end
 
@@ -47,6 +49,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_path(@user.id)
+    flash[:alert] = "投稿を削除しました"
   end
 
   private

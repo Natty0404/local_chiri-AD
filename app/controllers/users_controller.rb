@@ -11,8 +11,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(5)
-    # @favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    # @favorite_list = Post.find(favorites).page(params[:page]).per(10)
   end
 
   def edit
@@ -22,8 +20,10 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       redirect_to user_path(@user)
+      flash[:notice] = "更新が完了しました"
     else
       render 'edit'
+      flash[:alert] = "更新に失敗しました"
     end
   end
 
@@ -34,8 +34,8 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "またのご利用お待ちしております"
     redirect_to root_path
+    flash[:notice] = "またのご利用お待ちしております"
   end
 
   def favorite

@@ -46,3 +46,13 @@ table {
   justify-content: center;
 }
 
+.notice {
+  background-color: #dbebc4;
+  width: 100%;
+}
+
+.alert {
+  background-color: #ffe6ea;
+  width: 100%;
+}
+

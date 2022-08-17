@@ -1,0 +1,21 @@
+ ja:
+  errors:
+    messages:
+      blank: "が入力されていません。"
+
+  devise:
+    sessions:
+      signed_in: 'ログインしました。'
+#      signed_in: 'Signed in successfully.'
+      signed_out: 'ログアウトしました。'
+#      signed_out: 'Signed out successfully.'
+
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス
+      post:
+        title: 聖地名
