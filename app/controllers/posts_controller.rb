@@ -13,8 +13,8 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       redirect_to request.referer
+      flash[:notice] = "投稿しました"
     else
-      @posts = Post.all
       render 'new'
     end
   end

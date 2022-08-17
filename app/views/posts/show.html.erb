@@ -19,6 +19,9 @@
            <p><strong>住所</strong>　　　　<%= @post.address %></p>
          </div>
          <div class="mx-auto mb-4">
+           <p><strong>投稿日</strong>　　　<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+         </div>
+         <div class="mx-auto mb-4">
            <p><strong>お気に入り</strong>　<%= @post.favorites.count %></p>
          </div>
          <% if @user == current_user %>
@@ -47,8 +50,8 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 mt-4">
-      <div id="map" style="width: 610px; height: 690px;"></div>
+    <div class="col-lg-3 mt-4 mb-4">
+      <div id="map" style="width: 610px; height: 750px;"></div>
         <script>
           let map
 

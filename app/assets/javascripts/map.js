@@ -1,56 +1,4 @@
-<div class="container ml-2">
-  <div class="row">
-    <div class="mx-auto col-lg-6">
-      <h4 class="mt-4"><strong>聖地詳細</strong></h4><br>
-       <div class="mx-auto col-8">
-         <div class="mx-auto mb-3">
-           <%= image_tag @post.get_post_image(400,400) %>
-         </div>
-         <div class="mx-auto mb-3">
-           <p><strong>投稿者</strong>　　　<%= link_to @post.user.name, user_path(@user.id) %></p>
-         </div>
-         <div class="mx-auto mb-3">
-           <p><strong>聖地名</strong>　　　<%= @post.title %></p>
-         </div>
-         <div class="mx-auto mb-3">
-           <p><strong>聖地説明</strong>　　<%= @post.body %></p>
-         </div>
-          <div class="mx-auto mb-4">
-           <p><strong>住所</strong>　　　　<%= @post.address %></p>
-         </div>
-         <div class="mx-auto mb-4">
-           <p><strong>お気に入り</strong>　<%= @post.favorites.count %></p>
-         </div>
-         <% if @user == current_user %>
-          <div class="row">
-            <div class="col">
-             <%= link_to "編集", edit_post_path(@post.id), class:"btn btn-outline-success btn-block" %>
-            </div>
-            <div class="col">
-              <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block" %>
-            </div>
-          </div>
-         <% end %>
-       </div>
-    </div>
-    <div class="mx-auto col-lg-3">
-      <div class="mx-auto mt-5">
-       <span><strong>コメント</strong></span>　<%= @post.post_comments.count %><br><br>
-       <div class="comments-index">
-         <%= render "post_comments/index", post_comments: @post_comments, user: @user %>
-       </div>
-      </div>
-      <%= paginate @post_comments %>
-      <div class="mx-auto mb-4">
-        <div class="comments-form">
-          <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 mt-4">
-      <div id="map" style="width: 610px; height: 690px;"></div>
-        <script>
-          let map
+let map
 
           const display = document.getElementById('display')
 
@@ -114,8 +62,3 @@
                   }
               });
           }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['SECRET_KEY']%>&callback=initMap"></script>
-      </div>
-  </div>
-</div>

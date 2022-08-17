@@ -33,7 +33,7 @@
       </table>
       <%= paginate @posts %>
       <% else %>
-      <table class="table table-hover table-inverse">
+      <table class="table table-hover table-inverse text-center">
         <tbody>
           <thead>
             <tr>
@@ -51,8 +51,8 @@
               <% end %>
             </td>
             <td><%= link_to user.name, user_path(user.id), class:"post_#[user.id}" %></td>
-            <td><%=  link_to user.followings.count, user_followings_path(user.id) %>　フォロー</td>
-            <td><%= link_to user.followers.count, user_followers_path(user.id) %>　フォロワー</td>
+            <td><%=  link_to user.followings.count, user_followings_path(user.id) %></td>
+            <td><%= link_to user.followers.count, user_followers_path(user.id) %></td>
           </tr>
           <% end %>
         </tbody>

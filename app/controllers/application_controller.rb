@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
       new_post_path
+      flash[:notice] = "ログインしました"
     end
 
     def after_sign_out_path_for(resource)
       root_path
+      flash[:notice] = "ログアウトしました"
     end
 
 

@@ -1,7 +1,7 @@
  <div class="container">
   <div class="row">
     <div class="col-lg-3 mt-2">
-      <h2 class="mt-3"><strong>My page</strong></h2><br>
+      <h2 class="mt-3"><strong>マイページ</strong></h2><br>
       <%= render 'users/info', user: @user %>
       <% if @user == current_user && @user.name != "ゲストユーザー" %>
       <div>

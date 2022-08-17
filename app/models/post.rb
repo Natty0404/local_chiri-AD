@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :post_image, presence: true
+  validates :address, presence: true
 
   def get_post_image(width, height)
     unless post_image.attached?
