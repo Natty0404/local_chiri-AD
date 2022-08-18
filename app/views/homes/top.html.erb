@@ -1,22 +1,20 @@
 <%= render "layouts/flash" %>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6 mt-5">
-    　　<%= image_tag "logo_text.png", width: "600px" %>
-      <div>
-        <%= link_to "ログイン", new_user_session_path, class:"btn btn-info btn-sm btn-block mt-5" %>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto text-center col-lg-6 mt-5">
+        <%= image_tag "logo_mark.jpg", width: "250px" %>
+      　<%= image_tag "logo_text.png", width: "600px" %>
+        <div>
+          <%= link_to "ログイン", new_user_session_path, class:"btn btn-info btn-sm btn-block mt-5" %>
+        </div>
+        <div>
+          <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success btn-sm btn-block mt-4" %>
+        </div>
+        <div>
+          <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class:"btn btn-warning btn-sm btn-block mt-4", method: :post %>
+        </div>
       </div>
-      <div>
-        <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success btn-sm btn-block mt-4" %>
-      </div>
-      <div>
-        <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class:"btn btn-warning btn-sm btn-block mt-4", method: :post %>
-      </div>
-    </div>
-
-    <div class="col-lg-6 mt-5">
-      <%= image_tag "illust_location.png", width: "650px" %>
     </div>
   </div>
-</div>
+
 

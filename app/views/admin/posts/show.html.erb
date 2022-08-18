@@ -7,7 +7,7 @@
            <%= image_tag @post.get_post_image(400,400) %>
          </div>
          <div class="mx-auto mb-3">
-           <p><strong>投稿者</strong>　　　<%= link_to @post.user.name, user_path(@user.id) %></p>
+           <p><strong>投稿者</strong>　　　<%= link_to @post.user.name, admin_user_path(@user.id) %></p>
          </div>
          <div class="mx-auto mb-3">
            <p><strong>聖地名</strong>　　　<%= @post.title %></p>
@@ -21,16 +21,11 @@
          <div class="mx-auto mb-4">
            <p><strong>お気に入り</strong>　<%= @post.favorites.count %></p>
          </div>
-         <% if @user == current_user %>
           <div class="row">
             <div class="col">
-             <%= link_to "編集", edit_post_path(@post.id), class:"btn btn-outline-success btn-block" %>
-            </div>
-            <div class="col">
-              <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block" %>
+              <%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-outline-danger btn-block" %>
             </div>
           </div>
-         <% end %>
        </div>
     </div>
     <div class="mx-auto col-lg-3">
@@ -42,8 +37,8 @@
       </div>
       <%= paginate @post_comments %>
     </div>
-    <div class="col-lg-3 mt-4">
-      <div id="map" style="width: 610px; height: 690px;"></div>
+    <div class="col-lg-3 mt-4 mb-4">
+      <div id="map" style="width: 610px; height: 750px;"></div>
         <script>
           let map
 

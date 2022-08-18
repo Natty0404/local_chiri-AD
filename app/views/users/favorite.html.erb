@@ -2,17 +2,18 @@
   <div class="row">
     <div class="col-lg-12">
       <h2 class="mt-4"><strong>お気に入り一覧</strong></h2><br>
-       <table class='table table-hover table-inverse'>
-       <thead>
-        <tr>
-          <th></th>
-          <th>投稿者</th>
-          <th>聖地名</th>
-          <th>お気に入り数</th>
-        </tr>
-      </thead>
       <% if @favorite_list.present? %>
+       <table class='table table-hover table-inverse'>
+         <thead>
+          <tr>
+            <th></th>
+            <th>投稿者</th>
+            <th>聖地名</th>
+            <th>お気に入り数</th>
+          </tr>
+        </thead>
         <% @favorite_list.each do |post| %>
+        <tbody>
          <tr>
            <td>
               <%= link_to post_path(post.id), data: {"turbolinks" => false} do %>
@@ -25,11 +26,14 @@
             </td>
             <td><%= post.favorites.count %></td>
          </tr>
-        <% end %>
-       <% end %>
        </tbody>
       </table>
       <%= paginate @favorite_list %>
+      <% end %>
+      <% else %>
+      <p>お気に入りしている投稿はありません</p>
+      <% end %>
     </div>
   </div>
 </div>
+

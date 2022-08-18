@@ -6,6 +6,7 @@ class Users::SessionsController < Devise::SessionsController
     if @user
       if @user.valid_password?(params[:user][:password]) &&  (@user.active_for_authentication? == false)
       redirect_to new_user_session_path
+      flash[:alert] =  "退会済みユーザーのためログインできません。新規登録からお進みください。"
       end
     end
   end

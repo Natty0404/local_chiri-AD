@@ -4,9 +4,9 @@
       <tbody>
         <tr>
           <td><%= image_tag user.get_profile_image(80,80) %></td>
-          <td><%= link_to user.name, user_path(user.id) %></td>
-          <td>フォロー <%= user.followings.count %></td>
-          <td>フォロワー <%= user.followers.count %></td>
+          <td><%= link_to user.name, admin_user_path(user.id) %></td>
+          <td><%= user.followings.count %>　フォロー</td>
+          <td><%= user.followers.count %>　 フォロワー</td>
         </tr>
       </tbody>
     </table>
