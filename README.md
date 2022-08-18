@@ -1,4 +1,6 @@
 # ロケチリ！
+![logo_readme](https://user-images.githubusercontent.com/106375669/185300315-e185a410-15fb-499a-ad22-57cfabd8192d.png)
+
 
 ## サイト概要
 
