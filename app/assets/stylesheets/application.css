@@ -16,7 +16,7 @@
 
 
 .about-image {
-  background-image: url(suwa.jpg);
+  background-image: image-url("suwa.jpg");
   width: 100%;
   height: 800px;
   padding: 130px;
