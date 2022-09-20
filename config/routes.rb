@@ -12,9 +12,13 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
-  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
-    resources :post_comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
+  namespace'api' do
+    namespace 'v1' do
+      resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+        resources :post_comments, only: [:create, :destroy]
+        resource :favorites, only: [:create, :destroy]
+      end
+    end
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
